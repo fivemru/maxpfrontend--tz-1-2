@@ -5,7 +5,7 @@
 .nav__link {
   margin: auto 10px;
   padding: 5px 10px;
-  background-color: deepskyblue;
+  background-color: #008bce;
   color: white;
   border-radius: 4px;
   text-decoration: none;
@@ -15,10 +15,10 @@
   margin-left: 0;
 }
 
-.nav__link:hover {
-  background-color: steelblue;
+.nav__link:not([class$='--active']):hover {
+  background-color: #18adf5;
 }
 
 .nav__link--active {
-  background-color: orange;
+  background-color: #d08600;
 }
