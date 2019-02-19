@@ -6,7 +6,7 @@ import './LoginPage.css';
 export const LoginPage = props => {
   const { isLogin, isPending, onLogin, error } = props;
 
-  console.log('LoginPage: ', props);
+  console.log('render LoginPage');
 
   let loginInput;
   let passwordInput;

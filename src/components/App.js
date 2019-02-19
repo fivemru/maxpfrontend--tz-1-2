@@ -25,6 +25,8 @@ const App = props => {
     }
   }, []);
 
+  console.log('render App');
+
   return (
     <div className='app'>
       <Router>

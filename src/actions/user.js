@@ -30,6 +30,7 @@ export const onLogin = (login, password) => dispatch => {
 };
 
 export const onLogout = () => dispatch => {
-  // clear cookie, something else...
+  sessionStorage.setItem('login', '');
+  sessionStorage.setItem('pass', '');
   dispatch({ type: LOGOUT });
 };

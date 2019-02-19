@@ -4,6 +4,7 @@ import './Navigation.css';
 
 export const Navigation = props => {
   const { className } = props;
+  console.log('render Navigation');
 
   return (
     <nav className={`nav ${className}`}>
