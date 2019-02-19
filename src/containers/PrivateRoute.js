@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-export const PrivateRoute = props => {
+const PrivateRoute = props => {
   const { isLogin, component: Component, ...rest } = props;
 
   return (
@@ -24,9 +24,8 @@ export const PrivateRoute = props => {
   );
 };
 
-const mapStateToProps = ({ user }, ownProps) => {
+const mapStateToProps = ({ user }) => {
   return {
-    ...ownProps,
     isLogin: user.isLogin
   };
 };
