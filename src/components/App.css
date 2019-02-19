@@ -16,3 +16,7 @@
   padding: 20px;
   background-color: #eee;
 }
+
+.error {
+  color: crimson;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from './Navigation';
-import { Login } from './Login';
+import Login from '../containers/Login';
 import './Header.css';
 
 export const Header = props => {
