@@ -1,0 +1,14 @@
+.news {
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.news__title {
+  margin: 0;
+  padding-top: 10px;
+  font-size: 18px;
+}
