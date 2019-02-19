@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from './Header';
 import { MainPage } from './MainPage';
 import { NewsPage } from './NewsPage';
 import { ProfilePage } from './ProfilePage';
+import { NotFound } from './NotFound';
 import LoginPage from '../containers/LoginPage';
 import PrivateRoute from '../containers/PrivateRoute';
 import './App.css';
@@ -34,10 +35,11 @@ const App = props => {
           <Header />
           <main className='app__main app__wrapper'>
             <Switch>
-              <Route exact path='/' component={MainPage} />
+              <Route exact path='/(index\.html)?' component={MainPage} />
               <Route path='/news' component={NewsPage} />
               <PrivateRoute path='/profile' component={ProfilePage} />
               <Route path='/login' component={LoginPage} />
+              <Route component={NotFound} />
             </Switch>
           </main>
         </>

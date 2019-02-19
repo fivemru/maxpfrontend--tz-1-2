@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import './Login.css';
 
 export const Login = props => {
-  const { isLogin, isPending, onLogout, className } = props;
-  const [redirect, setRedirect] = useState(null);
+  const { isLogin, isPending, onLogout, className, history } = props;
+
   console.log('render Login');
 
   return (
     <div className={className}>
-      {redirect && <Redirect to={redirect} />}
       {!isLogin && (
-        <button onClick={() => setRedirect('/login')} disabled={isPending}>
+        <button onClick={() => history.push('/login')} disabled={isPending}>
           Login
         </button>
       )}
