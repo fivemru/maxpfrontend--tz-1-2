@@ -1,0 +1,10 @@
+.news-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.news-list__item {
+  margin: 10px;
+}
