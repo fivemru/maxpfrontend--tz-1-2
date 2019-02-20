@@ -19,11 +19,15 @@ export const onLogin = (login, password) => dispatch => {
     dispatch({ type: LOGIN_PENDING, payload: false });
 
     if (login === LOGIN && password === PASSWORD) {
+      sessionStorage.setItem('login', login);
+      sessionStorage.setItem('pass', password);
+
       dispatch({ type: LOGIN_SUCCESSED });
     } else {
       dispatch({
         type: LOGIN_FAILED,
-        payload: new Error('Incorrect login or password')
+        payload: new Error('Incorrect login or password'),
+        error: true
       });
     }
   }, 500);

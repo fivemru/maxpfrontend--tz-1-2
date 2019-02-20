@@ -4,12 +4,15 @@ import './Login.css';
 export const Login = props => {
   const { isLogin, isPending, onLogout, className, history } = props;
 
-  console.log('render Login');
+  const from = history.location.pathname;
 
   return (
     <div className={className}>
       {!isLogin && (
-        <button onClick={() => history.push('/login')} disabled={isPending}>
+        <button
+          onClick={() => history.push('/login', { from })}
+          disabled={isPending}
+        >
           Login
         </button>
       )}

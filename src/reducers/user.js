@@ -11,10 +11,10 @@ const initialState = {
   error: null
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload, error }) => {
   switch (type) {
     case LOGIN_PENDING:
-      return { ...state, isPending: true, isLogin: false, error: null };
+      return { ...state, isPending: true, isLogin: false, error };
 
     case LOGIN_SUCCESSED:
       return { ...state, isPending: false, isLogin: true };

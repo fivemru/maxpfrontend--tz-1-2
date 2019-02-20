@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import './LoginPage.css';
 
 export const LoginPage = props => {
-  const { isLogin, isPending, onLogin, error } = props;
+  const { isLogin, isPending, onLogin, error, location } = props;
 
   console.log('render LoginPage');
 
@@ -14,16 +14,14 @@ export const LoginPage = props => {
     e.preventDefault();
     const login = loginInput.value;
     const pass = passwordInput.value;
-
-    sessionStorage.setItem('login', login);
-    sessionStorage.setItem('pass', pass);
-
     onLogin(login, pass);
   };
 
+  const { from } = location.state || { from: '/profile' };
+
   return (
     <>
-      {isLogin && <Redirect to='/profile' />}
+      {isLogin && <Redirect to={from} />}
       <h1 className='login-form__title'>Authorization</h1>
       <form className='login-form'>
         <label>
