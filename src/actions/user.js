@@ -2,35 +2,54 @@ import {
   LOGIN_SUCCESSED,
   LOGIN_PENDING,
   LOGIN_FAILED,
-  LOGOUT
+  LOGOUT,
+  API_LOGIN_SUCCESSED_STATUS,
+  API_LOGIN_FAILED_STATUS
 } from '../constants';
-
-const LOGIN = 'admin';
-const PASSWORD = '1234';
+import { ResponseError } from '../helpers/errors';
+import { httpPost } from '../helpers/network';
 
 export const onLogin = (login, password) => dispatch => {
-  dispatch({
-    type: LOGIN_PENDING,
-    payload: true
-  });
+  dispatch({ type: LOGIN_PENDING });
 
-  // emulation a request to server
-  setTimeout(() => {
-    dispatch({ type: LOGIN_PENDING, payload: false });
+  // post data
+  const postData = { email: login, password };
 
-    if (login === LOGIN && password === PASSWORD) {
-      sessionStorage.setItem('login', login);
-      sessionStorage.setItem('pass', password);
+  // request options
+  const options = {
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(postData)
+  };
 
-      dispatch({ type: LOGIN_SUCCESSED });
-    } else {
-      dispatch({
-        type: LOGIN_FAILED,
-        payload: new Error('Incorrect login or password'),
-        error: true
-      });
-    }
-  }, 500);
+  httpPost('/validate', options)
+    .then(res => {
+      try {
+        const {
+          status,
+          data,
+          message = 'Empty error message from server'
+        } = res;
+
+        if (status === API_LOGIN_FAILED_STATUS) {
+          throw new ResponseError(message, res);
+        }
+
+        if (status !== API_LOGIN_SUCCESSED_STATUS) {
+          throw new ResponseError('Unknown validate status from server', res);
+        }
+
+        // remember credentials =( (it is better way to use a token instead of a password in plain text)
+        sessionStorage.setItem('login', login);
+        sessionStorage.setItem('pass', password);
+
+        dispatch({ type: LOGIN_SUCCESSED, payload: data });
+      } catch (err) {
+        throw err;
+      }
+    })
+    .catch(err => dispatch({ type: LOGIN_FAILED, payload: err, error: true }));
 };
 
 export const onLogout = () => dispatch => {

@@ -4,27 +4,36 @@ import {
   LOGIN_FAILED,
   LOGOUT
 } from '../constants';
+import { parseError } from '../helpers/errors';
 
+// Init state
 const initialState = {
   isLogin: false,
   isPending: false,
   error: null
 };
 
-export default (state = initialState, { type, payload, error }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN_PENDING:
-      return { ...state, isPending: true, isLogin: false, error };
+      return { ...state, isPending: true, error: null };
 
     case LOGIN_SUCCESSED:
-      return { ...state, isPending: false, isLogin: true };
+      return { ...state, isPending: false, isLogin: true, error: null };
 
     case LOGIN_FAILED:
+      // get clear error message for user
+      const msg = parseError(payload);
+
+      // send error info to developer ...
+      // ...
+      console.log('failed error payload: ', payload);
+
       return {
         ...state,
         isPending: false,
         isLogin: false,
-        error: payload.toString()
+        error: msg
       };
 
     case LOGOUT:

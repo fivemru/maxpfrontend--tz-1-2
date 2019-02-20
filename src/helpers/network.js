@@ -1,10 +1,17 @@
 import { API_URL } from '../constants';
 
-export function httpGet(path) {
-  return fetch(`${API_URL}/${path}`).then(res => {
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
+export function httpRequest(path, init) {
+  const base = API_URL.replace(/[\\/]$/, '');
+  return fetch(`${base}${path}`, init).then(res => {
+    if (!res.ok) throw res;
     return res.json();
   });
+}
+
+export function httpGet(path, init) {
+  return httpRequest(path, init);
+}
+
+export function httpPost(path, init = {}) {
+  return httpRequest(path, { method: 'POST', ...init });
 }
