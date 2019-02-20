@@ -1,6 +1,6 @@
 import { MainPage } from './components/MainPage';
 import { NewsPage } from './components/NewsPage';
-import { ProfilePage } from './components/ProfilePage';
+import ProfilePage from './containers/ProfilePage';
 import LoginPage from './containers/LoginPage';
 import { NotFound } from './components/NotFound';
 

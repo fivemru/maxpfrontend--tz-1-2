@@ -1,10 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ProfilePage from '../../containers/ProfilePage';
+import routes from '../../routes';
 import './LoginPage.css';
 
 export const LoginPage = props => {
-  const { isLogin, isPending, onLogin, error, location } = props;
+  const { isLogin, isPending, onLogin, error } = props;
 
   console.log('render LoginPage');
 
@@ -18,20 +20,23 @@ export const LoginPage = props => {
     onLogin(login, pass);
   };
 
-  const { from } = location.state || { from: '/profile' };
+  // const { from } = props.location.state || { from: '/profile' };
+  const { path: profilePath } = routes.find(
+    route => route.component === ProfilePage
+  );
 
   return (
     <>
-      {isLogin && <Redirect to={from} />}
+      {isLogin && <Redirect to={profilePath} />}
       <h1 className='login-form__title'>Authorization</h1>
       <form className='login-form'>
         <label>
           <input
             className='login-form__input'
-            name='login'
-            type='text'
-            placeholder='login'
-            autoComplete='username'
+            name='email'
+            type='email'
+            placeholder='user@mail.com'
+            autoComplete='email'
             defaultValue={sessionStorage.getItem('login')}
             ref={node => (loginInput = node)}
             disabled={isPending}

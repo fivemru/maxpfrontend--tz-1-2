@@ -10,6 +10,7 @@ import { parseError } from '../helpers/errors';
 const initialState = {
   isLogin: false,
   isPending: false,
+  id: null,
   error: null
 };
 
@@ -19,7 +20,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, isPending: true, error: null };
 
     case LOGIN_SUCCESSED:
-      return { ...state, isPending: false, isLogin: true, error: null };
+      const { id } = payload;
+      return { ...state, isPending: false, isLogin: true, error: null, id };
 
     case LOGIN_FAILED:
       // get clear error message for user
