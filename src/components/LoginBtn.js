@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const LoginBtn = props => {
   const { isLogin, isPending, onLogout, className, history } = props;
@@ -18,4 +19,11 @@ export const LoginBtn = props => {
       {isLogin && <button onClick={onLogout}>Logout</button>}
     </div>
   );
+};
+
+LoginBtn.propTypes = {
+  isLogin: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './LoginPage.css';
 
 export const LoginPage = props => {
@@ -60,4 +61,10 @@ export const LoginPage = props => {
       </form>
     </>
   );
+};
+
+LoginPage.propTypes = {
+  isLogin: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  onLogin: PropTypes.func.isRequired
 };

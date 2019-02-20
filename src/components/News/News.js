@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './News.css';
 
 export const News = props => {
@@ -19,4 +20,10 @@ export const News = props => {
       <h2 className='news__title'>{title}</h2>
     </div>
   );
+};
+
+News.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 };
