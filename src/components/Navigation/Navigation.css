@@ -1,5 +1,7 @@
 .nav {
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .nav__link {
