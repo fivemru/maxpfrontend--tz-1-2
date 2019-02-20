@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import routes from '../routes';
 import './Navigation.css';
 
 export const Navigation = props => {
@@ -8,28 +9,23 @@ export const Navigation = props => {
 
   return (
     <nav className={`nav ${className}`}>
-      <NavLink
-        exact
-        className='nav__link'
-        activeClassName='nav__link--active'
-        to='/'
-      >
-        Main
-      </NavLink>
-      <NavLink
-        className='nav__link'
-        activeClassName='nav__link--active'
-        to='/news'
-      >
-        News
-      </NavLink>
-      <NavLink
-        className='nav__link'
-        activeClassName='nav__link--active'
-        to='/profile'
-      >
-        Profile
-      </NavLink>
+      {routes
+        .filter(({ isNav }) => isNav)
+        .map(({ path, isExact, link = {} }) => {
+          const to = link.to || path;
+
+          return (
+            <NavLink
+              key={to}
+              exact={isExact}
+              className='nav__link'
+              activeClassName='nav__link--active'
+              to={to}
+            >
+              {link.text}
+            </NavLink>
+          );
+        })}
     </nav>
   );
 };
