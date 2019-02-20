@@ -1,7 +1,6 @@
 import React from 'react';
-import './Login.css';
 
-export const Login = props => {
+export const LoginBtn = props => {
   const { isLogin, isPending, onLogout, className, history } = props;
 
   const from = history.location.pathname;

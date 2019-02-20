@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Header } from './Header';
-import PrivateRoute from '../containers/PrivateRoute';
-import { onLogin } from '../actions/user';
-import routes from '../routes';
+import { Header } from '../Header';
+import PrivateRoute from '../../containers/PrivateRoute';
+import routes from '../../routes';
 import './App.css';
 
-const App = props => {
+export const App = props => {
   const { onLogin } = props;
 
   useEffect(() => {
@@ -47,16 +45,3 @@ const App = props => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  isLogin: user.isLogin,
-  isPending: user.isPending
-});
-
-const mapDispatchToProps = dispatch => ({
-  onLogin: (login, password) => dispatch(onLogin(login, password))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

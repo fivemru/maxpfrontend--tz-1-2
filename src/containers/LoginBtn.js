@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Login } from '../components/Login';
+import { LoginBtn } from '../components/LoginBtn';
 import { onLogout } from '../actions/user';
 
 const mapStateToProps = ({ user }) => ({
@@ -16,5 +16,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Login)
+  )(LoginBtn)
 );

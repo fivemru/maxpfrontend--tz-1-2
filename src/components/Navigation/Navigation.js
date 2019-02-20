@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import routes from '../routes';
+import routes from '../../routes';
 import './Navigation.css';
 
 export const Navigation = props => {

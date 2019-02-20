@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { News } from './News';
-import { httpGet } from '../helpers/network';
+import { News } from '../News';
+import { httpGet } from '../../helpers/network';
 import './NewsPage.css';
 
 export const NewsPage = () => {
