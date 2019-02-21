@@ -8,6 +8,7 @@ export const NotFound = props => {
 
   return (
     <div>
+      <h1>Not found</h1>
       Page <strong>{location.pathname}</strong> not found!
     </div>
   );

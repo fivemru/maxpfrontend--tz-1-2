@@ -3,6 +3,7 @@ import React from 'react';
 export const MainPage = () => {
   return (
     <div>
+      <h1>Main page</h1>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate
       aspernatur rem recusandae iure placeat in dignissimos minima? Dignissimos,
       iusto. Similique non quam nulla nemo autem ipsam impedit dignissimos
