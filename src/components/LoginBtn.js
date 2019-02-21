@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const LoginBtn = props => {
-  const { isLogin, isPending, onLogout, className, history } = props;
+  const { isLogin, isPending, authLogout, className, history } = props;
 
   const from = history.location.pathname;
 
@@ -16,7 +16,7 @@ export const LoginBtn = props => {
           Login
         </button>
       )}
-      {isLogin && <button onClick={onLogout}>Logout</button>}
+      {isLogin && <button onClick={authLogout}>Logout</button>}
     </div>
   );
 };
@@ -24,6 +24,6 @@ export const LoginBtn = props => {
 LoginBtn.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  onLogout: PropTypes.func.isRequired,
+  authLogout: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };

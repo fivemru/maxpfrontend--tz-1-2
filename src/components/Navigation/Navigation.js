@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
+import debug from '../../helpers/debug';
 import './Navigation.css';
 
 export const Navigation = props => {
   const { className } = props;
-  console.log('render Navigation');
+  debug('render Navigation');
 
   return (
     <nav className={`nav ${className}`}>

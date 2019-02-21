@@ -20,8 +20,6 @@ export const TextInput = props => {
     className
   } = props;
 
-  // console.log('render TextInput');
-
   return (
     <div
       className={cn('text-input', {

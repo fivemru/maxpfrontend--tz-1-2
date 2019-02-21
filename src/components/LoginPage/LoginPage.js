@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TextInput } from '../TextInput';
 import { useValidation } from '../../helpers/useValidation';
+import debug from '../../helpers/debug';
 import './LoginPage.css';
 
 const validate = {
@@ -17,7 +18,7 @@ const validate = {
 };
 
 export const LoginPage = props => {
-  const { isLogin, isPending, error, onLogin } = props;
+  const { isLogin, isPending, error, authLogin } = props;
 
   const initValues = {
     login: sessionStorage.getItem('login') || '',
@@ -41,7 +42,7 @@ export const LoginPage = props => {
     validateWhenInit: true,
     validateOnBlur: false,
     onSubmit: ({ login, password }) => {
-      onLogin({ login, password }, err => {
+      authLogin({ login, password }, err => {
         if (err) {
           setTouched({ ...touched, password: false });
           setValues({ ...values, password: '' });
@@ -50,7 +51,7 @@ export const LoginPage = props => {
     }
   });
 
-  console.log('render LoginPage');
+  debug('render LoginPage');
 
   return (
     <>
@@ -104,5 +105,5 @@ export const LoginPage = props => {
 LoginPage.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  onLogin: PropTypes.func.isRequired
+  authLogin: PropTypes.func.isRequired
 };

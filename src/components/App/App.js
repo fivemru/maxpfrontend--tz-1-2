@@ -3,23 +3,24 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { Header } from '../Header';
 import PrivateRoute from '../../containers/PrivateRoute';
 import routes from '../../routes';
+import debug from '../../helpers/debug';
 import './App.css';
 
 export const App = props => {
-  const { onLogin } = props;
+  const { authLogin } = props;
 
   useEffect(() => {
     const login = sessionStorage.getItem('login');
     const password = sessionStorage.getItem('password');
-    console.log('APP INIT: ', login, password);
+    debug('APP INIT: ', login, password);
 
     // try auth on init
     if (login && password) {
-      onLogin({ login, password });
+      authLogin({ login, password });
     }
   }, []);
 
-  console.log('render App');
+  debug('render App');
 
   return (
     <Router>

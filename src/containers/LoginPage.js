@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import { LoginPage } from '../components/LoginPage';
-import { onLogin } from '../actions/user';
+import { authLogin } from '../actions/auth';
 
-const mapStateToProps = ({ user }) => ({
-  isLogin: user.isLogin,
-  isPending: user.isPending,
-  error: user.error
+const mapStateToProps = ({ auth }) => ({
+  isLogin: auth.isLogin,
+  isPending: auth.isPending,
+  error: auth.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (...args) => dispatch(onLogin(...args))
+  authLogin: (...args) => dispatch(authLogin(...args))
 });
 
 export default connect(

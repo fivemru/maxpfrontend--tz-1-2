@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { App } from '../components/App';
-import { onLogin } from '../actions/user';
+import { authLogin } from '../actions/auth';
 
-const mapStateToProps = ({ user }) => ({
-  isLogin: user.isLogin,
-  isPending: user.isPending
+const mapStateToProps = ({ auth }) => ({
+  isLogin: auth.isLogin,
+  isPending: auth.isPending
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (...args) => dispatch(onLogin(...args))
+  authLogin: (...args) => dispatch(authLogin(...args))
 });
 
 export default connect(

@@ -30,9 +30,9 @@ PrivateRoute.propTypes = {
   component: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ auth }) => {
   return {
-    isLogin: user.isLogin
+    isLogin: auth.isLogin
   };
 };
 

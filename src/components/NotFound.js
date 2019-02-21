@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import debug from '../helpers/debug';
 
 export const NotFound = props => {
   const { location } = props;
-  console.log('render NotFound');
+  debug('render NotFound');
 
   return (
     <div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navigation } from '../Navigation';
 import LoginBtn from '../../containers/LoginBtn';
+import debug from '../../helpers/debug';
 import './Header.css';
 
 export const Header = () => {
-  console.log('render Header');
+  debug('render Header');
 
   return (
     <header className='header app__wrapper'>
