@@ -29,13 +29,13 @@ export const ProfilePage = props => {
 };
 
 ProfilePage.propTypes = {
+  isPending: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  getUserInfo: PropTypes.func.isRequired,
   user: PropTypes.shape({
-    isPending: PropTypes.bool.isRequired,
     userId: PropTypes.number.isRequired,
     city: PropTypes.string,
     languages: PropTypes.array,
-    social: PropTypes.array,
-    error: PropTypes.string
-  }),
-  getUserInfo: PropTypes.func.isRequired
+    social: PropTypes.array
+  })
 };
