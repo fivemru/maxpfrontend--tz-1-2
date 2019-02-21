@@ -4,7 +4,9 @@ import { ProfilePage } from '../components/ProfilePage';
 import { getUserInfo } from '../actions/user';
 
 const mapStateToProps = ({ user }) => ({
-  user
+  user,
+  isPending: user.isPending,
+  error: user.error
 });
 
 const mapDispatchToProps = dispatch => ({
