@@ -1,10 +1,14 @@
 .news-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .news-list__item {
-  margin: 10px;
+  margin: 10px 0;
+}
+
+.news-list__item:last-child {
+  margin-bottom: 0;
 }

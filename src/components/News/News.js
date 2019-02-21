@@ -3,27 +3,20 @@ import PropTypes from 'prop-types';
 import './News.css';
 
 export const News = props => {
-  const { className, title, image, date } = props;
-
-  const [dateFormatted] = date.split('T');
+  const { className, id, title, text } = props;
 
   return (
     <div className={`news ${className}`}>
-      <img
-        className='news__image'
-        src={image}
-        width='128'
-        height='128'
-        alt={title}
-      />
-      <div className='news__date'>{dateFormatted}</div>
-      <h2 className='news__title'>{title}</h2>
+      <h2 className='news__title'>
+        #{id} {title}
+      </h2>
+      <div className='news__text'>{text}</div>
     </div>
   );
 };
 
 News.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired
 };

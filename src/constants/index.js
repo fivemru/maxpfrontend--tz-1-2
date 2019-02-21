@@ -1,7 +1,11 @@
 // export const API_URL = 'https://5c6b7aa5e85ff4001408559c.mockapi.io';
 export const API_URL = 'https://mysterious-reef-29460.herokuapp.com/api/v1/';
-export const API_SUCCESSED_STATUS = 'ok'
-export const API_FAILED_STATUS = 'err'
+export const API_SUCCESSED_STATUS = 'ok';
+export const API_FAILED_STATUS = 'err';
+
+export const NEWS_PENDING = 'NEWS_PENDING';
+export const NEWS_SUCCESSED = 'NEWS_SUCCESSED';
+export const NEWS_FAILED = 'NEWS_FAILED';
 
 export const USER_INFO_PENDING = 'USER_INFO_PENDING';
 export const USER_INFO_SUCCESSED = 'USER_INFO_SUCCESSED';
