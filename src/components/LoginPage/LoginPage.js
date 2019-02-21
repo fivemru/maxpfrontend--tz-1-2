@@ -5,11 +5,6 @@ import { TextInput } from '../TextInput';
 import { useValidation } from '../../helpers/useValidation';
 import './LoginPage.css';
 
-const initValues = {
-  login: sessionStorage.getItem('login') || '',
-  password: sessionStorage.getItem('password') || ''
-};
-
 const validate = {
   login: value =>
     (value.length < 3 ||
@@ -23,6 +18,11 @@ const validate = {
 
 export const LoginPage = props => {
   const { isLogin, isPending, error, onLogin } = props;
+
+  const initValues = {
+    login: sessionStorage.getItem('login') || '',
+    password: sessionStorage.getItem('password') || ''
+  };
 
   // state
   const {

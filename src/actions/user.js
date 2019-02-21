@@ -54,7 +54,6 @@ export const onLogin = ({ login, password }, cb) => dispatch => {
 };
 
 export const onLogout = () => dispatch => {
-  sessionStorage.setItem('login', '');
   sessionStorage.setItem('password', '');
   dispatch({ type: LOGOUT });
 };
