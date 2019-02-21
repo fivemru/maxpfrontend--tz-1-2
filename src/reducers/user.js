@@ -41,7 +41,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isPending: false,
-        isLogin: false,
         error: msg
       };
 
