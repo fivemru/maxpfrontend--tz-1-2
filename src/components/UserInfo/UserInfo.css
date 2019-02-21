@@ -1,0 +1,14 @@
+.social {
+  position: relative;
+  display: block;
+}
+
+.social__item {
+  position: relative;
+}
+
+.social__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}

@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from '../Icon';
+import debug from '../../helpers/debug';
 import './UserInfo.css';
 
 export const UserInfo = props => {
   const { userId, city, languages, social } = props;
+
+  const hangleIconNotFound = icon => {
+    debug(`icon ${icon} not found`);
+  };
 
   return (
     <div>
@@ -19,10 +25,18 @@ export const UserInfo = props => {
       </div>
       <div>
         Social:
-        <ul>
+        <ul className='social'>
           {social.map(({ label, link }) => (
-            <li key={link}>
-              <a href='{link'>{label}</a>
+            <li key={link} className='social__item'>
+              <a href={link}>
+                <Icon
+                  className='social__icon'
+                  icon={label}
+                  alt={label}
+                  hangleNotFound={hangleIconNotFound}
+                />
+                {label}
+              </a>
             </li>
           ))}
         </ul>
