@@ -1,0 +1,36 @@
+.text-input {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  margin: auto;
+}
+
+.text-input--valid::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  right: 10px;
+  top: 50%;
+  border-left: 2px solid green;
+  border-bottom: 2px solid green;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.text-input__input {
+  width: 200px;
+  margin: 5px 0;
+  padding: 5px 30px 5px 10px;
+  font-size: 18px;
+}
+
+.text-input__input--error {
+  outline: 4px solid #ff7e7e;
+  outline-offset: -5px;
+}
+
+.text-input__error {
+  display: block;
+  font-size: 15px;
+  color: #d11b1b;
+}

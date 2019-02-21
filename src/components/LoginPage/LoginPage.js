@@ -1,68 +1,101 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProfilePage from '../../containers/ProfilePage';
-import routes from '../../routes';
+import { TextInput } from '../TextInput';
+import { useValidation } from '../../helpers/useValidation';
 import './LoginPage.css';
 
+const initValues = {
+  login: sessionStorage.getItem('login') || '',
+  password: sessionStorage.getItem('password') || ''
+};
+
+const validate = {
+  login: value =>
+    (value.length < 3 ||
+      !/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        value
+      )) &&
+    'Email is not valid!',
+  password: value =>
+    value.length < 1 && 'Minimum password length is 1 characters!'
+};
+
 export const LoginPage = props => {
-  const { isLogin, isPending, onLogin, error } = props;
+  const { isLogin, isPending, error, onLogin } = props;
+
+  // state
+  const {
+    values,
+    errors,
+    touched,
+    isValid,
+    setValues,
+    setTouched,
+    handleBlur,
+    handleChange,
+    handleSubmit
+  } = useValidation({
+    initValues,
+    validate,
+    validateWhenInit: true,
+    validateOnBlur: false,
+    onSubmit: ({ login, password }) => {
+      onLogin({ login, password }, err => {
+        if (err) {
+          setTouched({ ...touched, password: false });
+          setValues({ ...values, password: '' });
+        }
+      });
+    }
+  });
 
   console.log('render LoginPage');
 
-  let loginInput;
-  let passwordInput;
-
-  const handleLogin = e => {
-    e.preventDefault();
-    const login = loginInput.value;
-    const pass = passwordInput.value;
-    onLogin(login, pass);
-  };
-
-  // const { from } = props.location.state || { from: '/profile' };
-  const { path: profilePath } = routes.find(
-    route => route.component === ProfilePage
-  );
-
   return (
     <>
-      {isLogin && <Redirect to={profilePath} />}
+      {isLogin && <Redirect to='/profile' />}
       <h1 className='login-form__title'>Authorization</h1>
+
       <form className='login-form'>
         <label>
-          <input
-            className='login-form__input'
-            name='email'
+          <TextInput
             type='email'
-            placeholder='user@mail.com'
+            name='login'
             autoComplete='email'
-            defaultValue={sessionStorage.getItem('login')}
-            ref={node => (loginInput = node)}
+            placeholder='user@mail.com'
+            value={values.login}
+            isValid={!errors.login}
+            error={touched.login && errors.login}
+            onBlur={handleBlur}
+            onChange={handleChange}
             disabled={isPending}
           />
         </label>
+
         <label>
-          <input
-            className='login-form__input'
-            name='password'
+          <TextInput
             type='password'
+            name='password'
             placeholder='password'
             autoComplete='current-password'
-            defaultValue={sessionStorage.getItem('pass')}
-            ref={node => (passwordInput = node)}
+            value={values.password}
+            error={touched.password && errors.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
             disabled={isPending}
           />
-          <button
-            className='login-form__btn'
-            onClick={handleLogin}
-            disabled={isPending}
-          >
-            login
-          </button>
-
-          {error && <p className='error'>{error}</p>}
         </label>
+
+        <button
+          className='login-form__btn'
+          onClick={handleSubmit}
+          disabled={isPending || !isValid}
+        >
+          {isPending ? 'wait...' : 'login'}
+        </button>
+
+        {!isValid && error && <p className='error'>{error}</p>}
       </form>
     </>
   );

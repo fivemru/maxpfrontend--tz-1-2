@@ -9,7 +9,7 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (login, password) => dispatch(onLogin(login, password))
+  onLogin: (...args) => dispatch(onLogin(...args))
 });
 
 export default connect(

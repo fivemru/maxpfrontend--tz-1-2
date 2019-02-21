@@ -9,7 +9,7 @@ import {
 import { ResponseError } from '../helpers/errors';
 import { httpPost } from '../helpers/network';
 
-export const onLogin = (login, password) => dispatch => {
+export const onLogin = ({ login, password }, cb) => dispatch => {
   dispatch({ type: LOGIN_PENDING });
 
   // post data
@@ -26,34 +26,35 @@ export const onLogin = (login, password) => dispatch => {
   httpPost('/validate', options)
     .then(res => {
       try {
-        const {
-          status,
-          data,
-          message = 'Empty error message from server'
-        } = res;
+        const { status, data, message = 'Empty message from server' } = res;
 
         if (status === API_LOGIN_FAILED_STATUS) {
           throw new ResponseError(message, res);
         }
 
         if (status !== API_LOGIN_SUCCESSED_STATUS) {
-          throw new ResponseError('Unknown validate status from server', res);
+          throw new ResponseError('Unknown server status', res);
         }
 
         // remember credentials =( (it is better way to use a token instead of a password in plain text)
         sessionStorage.setItem('login', login);
-        sessionStorage.setItem('pass', password);
+        sessionStorage.setItem('password', password);
 
         dispatch({ type: LOGIN_SUCCESSED, payload: data });
+
+        if (cb instanceof Function) cb(null, data);
       } catch (err) {
         throw err;
       }
     })
-    .catch(err => dispatch({ type: LOGIN_FAILED, payload: err, error: true }));
+    .catch(err => {
+      dispatch({ type: LOGIN_FAILED, payload: err, error: true });
+      if (cb instanceof Function) cb(err);
+    });
 };
 
 export const onLogout = () => dispatch => {
   sessionStorage.setItem('login', '');
-  sessionStorage.setItem('pass', '');
+  sessionStorage.setItem('password', '');
   dispatch({ type: LOGOUT });
 };

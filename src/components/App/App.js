@@ -10,12 +10,12 @@ export const App = props => {
 
   useEffect(() => {
     const login = sessionStorage.getItem('login');
-    const pass = sessionStorage.getItem('pass');
-    console.log('APP INIT: ', login, pass);
+    const password = sessionStorage.getItem('password');
+    console.log('APP INIT: ', login, password);
 
     // try auth on init
-    if (login && pass) {
-      onLogin(login, pass);
+    if (login && password) {
+      onLogin({ login, password });
     }
   }, []);
 
@@ -44,4 +44,3 @@ export const App = props => {
     </Router>
   );
 };
-
