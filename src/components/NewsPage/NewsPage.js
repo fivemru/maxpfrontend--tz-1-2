@@ -25,7 +25,7 @@ export const NewsPage = props => {
         </div>
       )}
       <div className='news-list'>
-        {isPending && <p>Loading...</p>}
+        {isPending && <p>Loading news...</p>}
         {error && <p className='error'>{error}</p>}
         {isLoaded &&
           data.map(news => (
