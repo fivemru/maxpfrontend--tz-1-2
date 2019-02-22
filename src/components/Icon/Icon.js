@@ -22,7 +22,7 @@ export const Icon = props => {
     width = 24,
     height = 24,
     alt = '',
-    hangleNotFound,
+    hangleNotFound = () => {},
     className
   } = props;
 
