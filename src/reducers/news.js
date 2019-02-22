@@ -5,7 +5,7 @@ import debug from '../helpers/debug';
 // Init state
 const initialState = {
   isPending: false,
-  data: [],
+  data: null,
   error: null
 };
 
