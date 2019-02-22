@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { NewsPage } from '../components/NewsPage';
 import { getNews } from '../actions/news';
 
@@ -9,9 +8,7 @@ const mapStateToProps = ({ news }) => ({
   data: news.data
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { getNews }
-  )(NewsPage)
-);
+export default connect(
+  mapStateToProps,
+  { getNews }
+)(NewsPage);
