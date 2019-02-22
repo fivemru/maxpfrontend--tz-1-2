@@ -8,13 +8,9 @@ const mapStateToProps = ({ auth }) => ({
   isPending: auth.isPending
 });
 
-const mapDispatchToProps = dispatch => ({
-  authLogout: () => dispatch(authLogout())
-});
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    { authLogout }
   )(LoginBtn)
 );

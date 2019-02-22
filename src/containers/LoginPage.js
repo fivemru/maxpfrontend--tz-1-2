@@ -8,11 +8,7 @@ const mapStateToProps = ({ auth }) => ({
   error: auth.error
 });
 
-const mapDispatchToProps = dispatch => ({
-  authLogin: (...args) => dispatch(authLogin(...args))
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { authLogin }
 )(LoginPage);

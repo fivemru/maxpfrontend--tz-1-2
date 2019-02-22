@@ -9,13 +9,9 @@ const mapStateToProps = ({ user }) => ({
   user
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUserInfo: (...args) => dispatch(getUserInfo(...args))
-});
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    { getUserInfo }
   )(ProfilePage)
 );

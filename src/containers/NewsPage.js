@@ -9,13 +9,9 @@ const mapStateToProps = ({ news }) => ({
   data: news.data
 });
 
-const mapDispatchToProps = dispatch => ({
-  getNews: (...args) => dispatch(getNews(...args))
-});
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    { getNews }
   )(NewsPage)
 );
