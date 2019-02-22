@@ -12,21 +12,17 @@ export function httpRequest(path, init) {
       })
       // process api problem
       .then(res => {
-        try {
-          const { status, message = 'Empty message from server' } = res;
+        const { status, message = 'Empty message from server' } = res;
 
-          if (status === API_FAILED_STATUS) {
-            throw new ResponseError(message, res);
-          }
-
-          if (status !== API_SUCCESSED_STATUS) {
-            throw new ResponseError('Unknown server status', res);
-          }
-
-          return res;
-        } catch (err) {
-          throw err;
+        if (status === API_FAILED_STATUS) {
+          throw new ResponseError(message, res);
         }
+
+        if (status !== API_SUCCESSED_STATUS) {
+          throw new ResponseError('Unknown server status', res);
+        }
+
+        return res;
       })
   );
 }
