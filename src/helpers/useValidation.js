@@ -29,14 +29,14 @@ export const useValidation = ({
   };
 
   const handleBlur = e => {
-    const { target } = e;
-    setTouched({ ...touched, [target.name]: true });
+    const { currentTarget } = e;
+    setTouched({ ...touched, [currentTarget.name]: true });
     if (validateOnBlur) handleValidate();
   };
 
   const handleChange = e => {
-    const { target } = e;
-    const nextValues = { ...values, [target.name]: target.value };
+    const { currentTarget } = e;
+    const nextValues = { ...values, [currentTarget.name]: currentTarget.value };
     setValues(nextValues);
     // pass actual values
     if (validateOnChange) handleValidate(nextValues);
