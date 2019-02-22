@@ -28,7 +28,21 @@ export default (state = initialState, { type, payload }) => {
 
     case USER_INFO_SUCCESSED:
       const { userId, city, languages = [], social = [] } = payload;
-      return { ...state, isPending: false, userId, city, languages, social };
+
+      // move web to top
+      const firstLabel = 'web';
+      const sortedSocial = social.sort(({ label: la }, { label: lb }) => {
+        return la === firstLabel || la < lb ? -1 : la > lb ? 1 : 0;
+      });
+
+      return {
+        ...state,
+        isPending: false,
+        userId,
+        city,
+        languages,
+        social: sortedSocial
+      };
 
     case USER_INFO_FAILED:
       // get clear error message for user
