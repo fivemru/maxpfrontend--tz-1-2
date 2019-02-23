@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "./static/media/twitch.da4c4d30.svg"
   },
   {
-    "revision": "96f5a304592bcefedd4b",
+    "revision": "6756f0ce10867d2fc39c",
     "url": "./static/css/main.a8dd9431.chunk.css"
   },
   {
@@ -12,16 +12,16 @@ self.__precacheManifest = [
     "url": "./static/js/runtime~main.9eb600ee.js"
   },
   {
-    "revision": "1da6bdba2cf8a2cf7e8f",
-    "url": "./static/js/2.1da6bdba.chunk.js"
+    "revision": "567a644c929dc50ab817",
+    "url": "./static/js/2.567a644c.chunk.js"
   },
   {
     "revision": "0efc6ad30bf493ee0e1827c366ab7803",
     "url": "./static/media/telegram.0efc6ad3.svg"
   },
   {
-    "revision": "96f5a304592bcefedd4b",
-    "url": "./static/js/main.96f5a304.chunk.js"
+    "revision": "6756f0ce10867d2fc39c",
+    "url": "./static/js/main.6756f0ce.chunk.js"
   },
   {
     "revision": "be06689853aec102607f5e54e6fd2dfa",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "./static/media/web.ffeb4651.svg"
   },
   {
-    "revision": "45ca7e1d47293f08000ca9921f85e70a",
+    "revision": "5a7d07072462d7cfbfd98aab59a65d58",
     "url": "./index.html"
   }
 ];
