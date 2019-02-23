@@ -2,7 +2,7 @@
 
 **Main tools**: CRA, react, redux, redux-thunk, react-router.
 
-### [Demo link](https://fivemru.github.io/maxpfrontend--tz-1-2/)
+### [Demo link](https://fivemru.github.io/maxpfrontend--tz-1-2/index.html)
 
 
 ## Features
