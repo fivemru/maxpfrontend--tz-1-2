@@ -1,0 +1,15 @@
+{
+  "main.css": "./static/css/main.a8dd9431.chunk.css",
+  "main.js": "./static/js/main.96f5a304.chunk.js",
+  "runtime~main.js": "./static/js/runtime~main.9eb600ee.js",
+  "static/js/2.1da6bdba.chunk.js": "./static/js/2.1da6bdba.chunk.js",
+  "index.html": "./index.html",
+  "precache-manifest.287695031a9196fa478e1ae17c2cf17b.js": "./precache-manifest.287695031a9196fa478e1ae17c2cf17b.js",
+  "service-worker.js": "./service-worker.js",
+  "static/media/telegram.svg": "./static/media/telegram.0efc6ad3.svg",
+  "static/media/twitch.svg": "./static/media/twitch.da4c4d30.svg",
+  "static/media/twitter.svg": "./static/media/twitter.be066898.svg",
+  "static/media/vk.svg": "./static/media/vk.763b977a.svg",
+  "static/media/web.svg": "./static/media/web.ffeb4651.svg",
+  "static/media/youtube.svg": "./static/media/youtube.330cdcdc.svg"
+}
