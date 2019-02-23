@@ -8,12 +8,12 @@ import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
 // Init state
-const initialState = {
+export const initialState = {
   isPending: false,
   userId: null,
   city: null,
-  languages: [],
-  social: [],
+  languages: null,
+  social: null,
   error: null
 };
 
@@ -31,13 +31,16 @@ export default (state = initialState, { type, payload }) => {
 
       // move web to top
       const firstLabel = 'web';
-      const sortedSocial = social.sort(({ label: la }, { label: lb }) => {
-        return la === firstLabel || la < lb ? -1 : la > lb ? 1 : 0;
-      });
+      const sortedSocial = social
+        .slice()
+        .sort(({ label: la }, { label: lb }) => {
+          return la === firstLabel || la < lb ? -1 : la > lb ? 1 : 0;
+        });
 
       return {
         ...state,
         isPending: false,
+        error: null,
         userId,
         city,
         languages,
