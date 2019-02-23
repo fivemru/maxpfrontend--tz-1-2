@@ -3,7 +3,7 @@ import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
 // Init state
-const initialState = {
+export const initialState = {
   isPending: false,
   data: null,
   error: null
@@ -15,7 +15,7 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, isPending: true, error: null };
 
     case NEWS_SUCCESSED:
-      return { ...state, isPending: false, data: payload };
+      return { ...state, isPending: false, data: payload, error: null };
 
     case NEWS_FAILED:
       // get clear error message for user
