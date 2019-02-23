@@ -8,7 +8,7 @@ import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
 // Init state
-const initialState = {
+export const initialState = {
   isLogin: false,
   isPending: false,
   id: null,
@@ -40,7 +40,7 @@ export default (state = initialState, { type, payload }) => {
       };
 
     case LOGOUT:
-      return { ...state, isLogin: false };
+      return { ...state, isLogin: false, isPending: false, error: null };
 
     default:
       return state;
