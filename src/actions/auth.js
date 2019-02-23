@@ -15,7 +15,7 @@ export const authLogin = ({ login, password }, cb) => dispatch => {
     body: JSON.stringify(postData)
   };
 
-  httpPost('/validate', options)
+  return httpPost('/validate', options)
     .then(({ data }) => {
       // remember credentials =( (it is better way to use a token instead of a password in plain text)
       sessionStorage.setItem('login', login);

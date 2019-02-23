@@ -8,19 +8,19 @@ export function httpRequest(path, init) {
     fetch(`${base}${path}`, init)
       // process network problem
       .then(res => {
-        if (!res.ok) throw res;
+        if (!res.ok) throw new ResponseError('network_error', res);
         return res.json();
       })
       // process api problem
       .then(res => {
-        const { status, message = 'Empty message from server' } = res;
+        const { status, message = 'empty_message_from_server' } = res;
 
         if (status === t.API_FAILED_STATUS) {
           throw new ResponseError(message, res);
         }
 
         if (status !== t.API_SUCCESSED_STATUS) {
-          throw new ResponseError('Unknown server status', res);
+          throw new ResponseError('unknown_server_status', res);
         }
 
         return res;
