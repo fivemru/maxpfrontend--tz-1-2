@@ -1,4 +1,5 @@
-import { API_URL, API_SUCCESSED_STATUS, API_FAILED_STATUS } from '../constants';
+import { API_URL } from '../constants';
+import * as t from '../constants/ActionTypes';
 import { ResponseError } from '../helpers/errors';
 
 export function httpRequest(path, init) {
@@ -14,11 +15,11 @@ export function httpRequest(path, init) {
       .then(res => {
         const { status, message = 'Empty message from server' } = res;
 
-        if (status === API_FAILED_STATUS) {
+        if (status === t.API_FAILED_STATUS) {
           throw new ResponseError(message, res);
         }
 
-        if (status !== API_SUCCESSED_STATUS) {
+        if (status !== t.API_SUCCESSED_STATUS) {
           throw new ResponseError('Unknown server status', res);
         }
 

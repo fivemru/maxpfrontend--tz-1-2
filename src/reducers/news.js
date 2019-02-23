@@ -1,4 +1,4 @@
-import { NEWS_PENDING, NEWS_SUCCESSED, NEWS_FAILED } from '../constants';
+import * as t from '../constants/ActionTypes';
 import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
@@ -11,13 +11,13 @@ export const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case NEWS_PENDING:
+    case t.NEWS_PENDING:
       return { ...state, isPending: true, error: null };
 
-    case NEWS_SUCCESSED:
+    case t.NEWS_SUCCESSED:
       return { ...state, isPending: false, data: payload, error: null };
 
-    case NEWS_FAILED:
+    case t.NEWS_FAILED:
       // get clear error message for user
       const msg = parseError(payload);
 

@@ -1,5 +1,5 @@
-import * as t from '../constants';
 import reducer, { initialState } from './news';
+import * as t from '../constants/ActionTypes';
 
 describe('news reducer', () => {
   it('should return the initial state', () => {

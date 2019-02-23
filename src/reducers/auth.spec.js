@@ -1,5 +1,5 @@
-import * as t from '../constants';
 import reducer, { initialState } from './auth';
+import * as t from '../constants/ActionTypes';
 import errors from '../constants/errors';
 
 describe('auth reducer', () => {

@@ -1,0 +1,15 @@
+export const API_SUCCESSED_STATUS = 'ok';
+export const API_FAILED_STATUS = 'err';
+
+export const NEWS_PENDING = 'NEWS_PENDING';
+export const NEWS_SUCCESSED = 'NEWS_SUCCESSED';
+export const NEWS_FAILED = 'NEWS_FAILED';
+
+export const USER_INFO_PENDING = 'USER_INFO_PENDING';
+export const USER_INFO_SUCCESSED = 'USER_INFO_SUCCESSED';
+export const USER_INFO_FAILED = 'USER_INFO_FAILED';
+
+export const LOGIN_PENDING = 'LOGIN_PENDING';
+export const LOGIN_SUCCESSED = 'LOGIN_SUCCESSED';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const LOGOUT = 'LOGOUT';

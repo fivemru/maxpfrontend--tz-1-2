@@ -1,13 +1,8 @@
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESSED,
-  LOGIN_FAILED,
-  LOGOUT
-} from '../constants';
+import * as t from '../constants/ActionTypes';
 import { httpPost } from '../helpers/network';
 
 export const authLogin = ({ login, password }, cb) => dispatch => {
-  dispatch({ type: LOGIN_PENDING });
+  dispatch({ type: t.LOGIN_PENDING });
 
   // post data
   const postData = { email: login, password };
@@ -26,16 +21,16 @@ export const authLogin = ({ login, password }, cb) => dispatch => {
       sessionStorage.setItem('login', login);
       sessionStorage.setItem('password', password);
 
-      dispatch({ type: LOGIN_SUCCESSED, payload: data });
+      dispatch({ type: t.LOGIN_SUCCESSED, payload: data });
       if (cb instanceof Function) cb(null, data);
     })
     .catch(err => {
-      dispatch({ type: LOGIN_FAILED, payload: err, error: true });
+      dispatch({ type: t.LOGIN_FAILED, payload: err, error: true });
       if (cb instanceof Function) cb(err);
     });
 };
 
 export const authLogout = () => dispatch => {
   sessionStorage.setItem('password', '');
-  dispatch({ type: LOGOUT });
+  dispatch({ type: t.LOGOUT });
 };
