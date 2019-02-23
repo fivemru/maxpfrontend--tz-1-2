@@ -18,27 +18,26 @@ export const UserInfo = props => {
       <div>
         Languages:
         <ul>
-          {languages.map(lang => (
-            <li key={lang}>{lang}</li>
-          ))}
+          {languages && languages.map(lang => <li key={lang}>{lang}</li>)}
         </ul>
       </div>
       <div>
         Social:
         <ul className='social'>
-          {social.map(({ label, link }) => (
-            <li key={link} className='social__item'>
-              <a href={link}>
-                <Icon
-                  className='social__icon'
-                  icon={label}
-                  alt={label}
-                  hangleNotFound={hangleIconNotFound}
-                />
-                {label}
-              </a>
-            </li>
-          ))}
+          {social &&
+            social.map(({ label, link }) => (
+              <li key={link} className='social__item'>
+                <a href={link}>
+                  <Icon
+                    className='social__icon'
+                    icon={label}
+                    alt={label}
+                    hangleNotFound={hangleIconNotFound}
+                  />
+                  {label}
+                </a>
+              </li>
+            ))}
         </ul>
       </div>
     </div>
@@ -47,7 +46,7 @@ export const UserInfo = props => {
 
 UserInfo.propTypes = {
   userId: PropTypes.number.isRequired,
-  city: PropTypes.string.isRequired,
-  languages: PropTypes.array.isRequired,
-  social: PropTypes.array.isRequired
+  city: PropTypes.string,
+  languages: PropTypes.array,
+  social: PropTypes.array
 };

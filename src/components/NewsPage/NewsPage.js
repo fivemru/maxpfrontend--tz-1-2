@@ -42,5 +42,5 @@ NewsPage.propTypes = {
   isPending: PropTypes.bool.isRequired,
   error: PropTypes.string,
   getNews: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array
 };
