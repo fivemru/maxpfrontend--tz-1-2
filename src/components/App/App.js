@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, HashRouter as Router } from 'react-router-dom';
 import { Header } from '../Header';
 import PrivateRoute from '../../containers/PrivateRoute';
 import routes from '../../routes';
