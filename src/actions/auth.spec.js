@@ -110,7 +110,7 @@ describe('auth action', () => {
     });
   });
 
-  it('authLogin: create action LOGIN_FAILED when network error (404)', () => {
+  it('authLogin: create action LOGIN_FAILED when network status code is 404 -> ResponseError("network_error")', () => {
     // api answer
     fetchMock.postOnce(`${API_URL}/validate`, 404);
 
@@ -119,6 +119,52 @@ describe('auth action', () => {
       {
         type: t.LOGIN_FAILED,
         payload: new ResponseError('network_error'),
+        error: true
+      }
+    ];
+
+    const store = mockStore({});
+    const args = { login: '', password: '' };
+
+    return store.dispatch(authLogin(args)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('authLogin: create action LOGIN_FAILED and replacing TypeError("Failed to fetch") to ResponseError("network_error")', () => {
+    // api answer
+    fetchMock.postOnce(`${API_URL}/validate`, {
+      throws: new TypeError('Failed to fetch')
+    });
+
+    const expectedActions = [
+      { type: t.LOGIN_PENDING },
+      {
+        type: t.LOGIN_FAILED,
+        payload: new ResponseError('network_error'),
+        error: true
+      }
+    ];
+
+    const store = mockStore({});
+    const args = { login: '', password: '' };
+
+    return store.dispatch(authLogin(args)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('authLogin: create action LOGIN_FAILED when throw new Error("Some unexpected error")', () => {
+    // api answer
+    fetchMock.postOnce(`${API_URL}/validate`, {
+      throws: new Error('Some unexpected error')
+    });
+
+    const expectedActions = [
+      { type: t.LOGIN_PENDING },
+      {
+        type: t.LOGIN_FAILED,
+        payload: new Error('Some unexpected error'),
         error: true
       }
     ];

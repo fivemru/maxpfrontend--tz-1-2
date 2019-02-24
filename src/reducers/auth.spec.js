@@ -1,6 +1,7 @@
 import reducer, { initialState } from './auth';
 import * as t from '../constants/ActionTypes';
 import errors from '../constants/errors';
+import { ResponseError } from '../helpers/errors';
 
 describe('auth reducer', () => {
   it('should return the initial state', () => {
@@ -103,7 +104,7 @@ describe('auth reducer', () => {
     });
   });
 
-  it('LOGIN_FAILED replaces the error message "network_error" from the dictonary', () => {
+  it('LOGIN_FAILED replaces the error ResponseError("network_error") from the dictonary', () => {
     const state = {
       ...initialState,
       isPending: true,
@@ -112,7 +113,7 @@ describe('auth reducer', () => {
     };
     const action = {
       type: t.LOGIN_FAILED,
-      payload: 'network_error'
+      payload: new ResponseError('network_error')
     };
 
     expect(reducer(state, action)).toEqual({
@@ -123,7 +124,7 @@ describe('auth reducer', () => {
     });
   });
 
-  it('LOGIN_FAILED replaces the error message "unknown_server_status" from the dictonary', () => {
+  it('LOGIN_FAILED replaces the error ResponseError("unknown_server_status") from the dictonary', () => {
     const state = {
       ...initialState,
       isPending: true,
@@ -132,7 +133,7 @@ describe('auth reducer', () => {
     };
     const action = {
       type: t.LOGIN_FAILED,
-      payload: 'unknown_server_status'
+      payload: new ResponseError('unknown_server_status')
     };
 
     expect(reducer(state, action)).toEqual({
@@ -143,7 +144,7 @@ describe('auth reducer', () => {
     });
   });
 
-  it('LOGIN_FAILED replaces the error message "empty_message_from_server" from the dictonary', () => {
+  it('LOGIN_FAILED replaces the error ResponseError("empty_message_from_server") from the dictonary', () => {
     const state = {
       ...initialState,
       isPending: true,
@@ -152,7 +153,7 @@ describe('auth reducer', () => {
     };
     const action = {
       type: t.LOGIN_FAILED,
-      payload: 'empty_message_from_server'
+      payload: new ResponseError('empty_message_from_server')
     };
 
     expect(reducer(state, action)).toEqual({

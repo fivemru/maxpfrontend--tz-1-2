@@ -13,8 +13,10 @@ export function httpRequest(path, init) {
       })
       // for catching "TypeError: Failed to fetch" and replacing it to network_error
       .catch(err => {
-        if (err instanceof ResponseError) throw err;
-        throw new ResponseError('network_error', err);
+        if (err.toString() === 'TypeError: Failed to fetch') {
+          throw new ResponseError('network_error', err);
+        }
+        throw err;
       })
       // process api problem
       .then(res => {
