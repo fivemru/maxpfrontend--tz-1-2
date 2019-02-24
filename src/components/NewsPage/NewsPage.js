@@ -8,7 +8,9 @@ import './NewsPage.css';
 export const NewsPage = props => {
   const { isPending, data, getNews, error } = props;
 
-  useEffect(() => getNews(), []);
+  useEffect(() => {
+    getNews();
+  }, []);
 
   return (
     <div>
@@ -42,5 +44,5 @@ NewsPage.propTypes = {
   isPending: PropTypes.bool.isRequired,
   error: PropTypes.string,
   getNews: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array
 };

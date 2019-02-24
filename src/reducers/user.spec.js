@@ -1,5 +1,5 @@
-import * as t from '../constants';
 import reducer, { initialState } from './user';
+import * as t from '../constants/ActionTypes';
 import errors from '../constants/errors';
 
 describe('user reducer', () => {

@@ -1,25 +1,33 @@
-import { API_URL, API_SUCCESSED_STATUS, API_FAILED_STATUS } from '../constants';
+import { API_URL } from '../constants';
+import * as t from '../constants/ActionTypes';
 import { ResponseError } from '../helpers/errors';
 
-export function httpRequest(path, init) {
+export function httpRequest(path = '', init) {
   const base = API_URL.replace(/[\\/]$/, '');
   return (
     fetch(`${base}${path}`, init)
       // process network problem
       .then(res => {
-        if (!res.ok) throw res;
-        return res.json();
+        if (res.ok) return res.json();
+        throw new ResponseError('network_error', res);
+      })
+      // for catching "TypeError: Failed to fetch" and replacing it to network_error
+      .catch(err => {
+        if (err.toString() === 'TypeError: Failed to fetch') {
+          throw new ResponseError('network_error', err);
+        }
+        throw err;
       })
       // process api problem
       .then(res => {
-        const { status, message = 'Empty message from server' } = res;
+        const { status, message = 'empty_message_from_server' } = res;
 
-        if (status === API_FAILED_STATUS) {
+        if (status === t.API_FAILED_STATUS) {
           throw new ResponseError(message, res);
         }
 
-        if (status !== API_SUCCESSED_STATUS) {
-          throw new ResponseError('Unknown server status', res);
+        if (status !== t.API_SUCCESSED_STATUS) {
+          throw new ResponseError('unknown_server_status', res);
         }
 
         return res;

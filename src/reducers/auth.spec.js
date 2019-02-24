@@ -1,6 +1,7 @@
-import * as t from '../constants';
 import reducer, { initialState } from './auth';
+import * as t from '../constants/ActionTypes';
 import errors from '../constants/errors';
+import { ResponseError } from '../helpers/errors';
 
 describe('auth reducer', () => {
   it('should return the initial state', () => {
@@ -83,7 +84,7 @@ describe('auth reducer', () => {
     });
   });
 
-  it('LOGIN_FAILED replaces "wrong_email_or_password" to clear message from error dictionary', () => {
+  it('LOGIN_FAILED replaces the error message "wrong_email_or_password" from the dictonary', () => {
     const state = {
       ...initialState,
       isPending: true,
@@ -100,6 +101,26 @@ describe('auth reducer', () => {
       isPending: false,
       isLogin: false,
       error: errors['wrong_email_or_password']
+    });
+  });
+
+  it('LOGIN_FAILED replaces the error ResponseError("network_error") from the dictonary', () => {
+    const state = {
+      ...initialState,
+      isPending: true,
+      isLogin: true,
+      error: null
+    };
+    const action = {
+      type: t.LOGIN_FAILED,
+      payload: new ResponseError('network_error')
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      isPending: false,
+      isLogin: false,
+      error: errors['network_error']
     });
   });
 

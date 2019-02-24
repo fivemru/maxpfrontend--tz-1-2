@@ -1,9 +1,4 @@
-import {
-  LOGIN_SUCCESSED,
-  USER_INFO_PENDING,
-  USER_INFO_SUCCESSED,
-  USER_INFO_FAILED
-} from '../constants';
+import * as t from '../constants/ActionTypes';
 import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
@@ -19,14 +14,14 @@ export const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOGIN_SUCCESSED:
+    case t.LOGIN_SUCCESSED:
       const { id } = payload;
       return { ...state, userId: id };
 
-    case USER_INFO_PENDING:
+    case t.USER_INFO_PENDING:
       return { ...state, isPending: true, error: null };
 
-    case USER_INFO_SUCCESSED:
+    case t.USER_INFO_SUCCESSED:
       const { userId, city, languages = [], social = [] } = payload;
 
       // move web to top
@@ -47,7 +42,7 @@ export default (state = initialState, { type, payload }) => {
         social: sortedSocial
       };
 
-    case USER_INFO_FAILED:
+    case t.USER_INFO_FAILED:
       // get clear error message for user
       const msg = parseError(payload);
 

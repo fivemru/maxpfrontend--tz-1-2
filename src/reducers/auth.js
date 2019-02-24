@@ -1,9 +1,4 @@
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESSED,
-  LOGIN_FAILED,
-  LOGOUT
-} from '../constants';
+import * as t from '../constants/ActionTypes';
 import { parseError } from '../helpers/errors';
 import debug from '../helpers/debug';
 
@@ -17,14 +12,14 @@ export const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOGIN_PENDING:
+    case t.LOGIN_PENDING:
       return { ...state, isPending: true, error: null };
 
-    case LOGIN_SUCCESSED:
+    case t.LOGIN_SUCCESSED:
       const { id } = payload;
       return { ...state, isPending: false, isLogin: true, error: null, id };
 
-    case LOGIN_FAILED:
+    case t.LOGIN_FAILED:
       // get clear error message for user
       const msg = parseError(payload);
 
@@ -39,7 +34,7 @@ export default (state = initialState, { type, payload }) => {
         error: msg
       };
 
-    case LOGOUT:
+    case t.LOGOUT:
       return { ...state, isLogin: false, isPending: false, error: null };
 
     default:
