@@ -8,7 +8,9 @@ import './ProfilePage.css';
 export const ProfilePage = props => {
   const { isPending, getUserInfo, user, error } = props;
 
-  useEffect(() => getUserInfo(user.userId), []);
+  useEffect(() => {
+    getUserInfo(user.userId);
+  }, []);
 
   debug('render ProfilePage');
 

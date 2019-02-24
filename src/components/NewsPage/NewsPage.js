@@ -8,7 +8,9 @@ import './NewsPage.css';
 export const NewsPage = props => {
   const { isPending, data, getNews, error } = props;
 
-  useEffect(() => getNews(), []);
+  useEffect(() => {
+    getNews();
+  }, []);
 
   return (
     <div>
