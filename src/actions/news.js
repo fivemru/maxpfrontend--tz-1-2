@@ -4,7 +4,7 @@ import { httpGet } from '../helpers/network';
 export const getNews = cb => dispatch => {
   dispatch({ type: t.NEWS_PENDING });
 
-  httpGet(`/news`)
+  return httpGet(`/news`)
     .then(({ data }) => {
       dispatch({ type: t.NEWS_SUCCESSED, payload: data });
       if (cb instanceof Function) cb(null, data);
