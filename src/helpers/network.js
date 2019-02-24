@@ -2,7 +2,7 @@ import { API_URL } from '../constants';
 import * as t from '../constants/ActionTypes';
 import { ResponseError } from '../helpers/errors';
 
-export function httpRequest(path, init) {
+export function httpRequest(path = '', init) {
   const base = API_URL.replace(/[\\/]$/, '');
   return (
     fetch(`${base}${path}`, init)
