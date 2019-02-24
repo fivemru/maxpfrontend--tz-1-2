@@ -1,10 +1,10 @@
 {
   "main.css": "./static/css/main.a8dd9431.chunk.css",
-  "main.js": "./static/js/main.6756f0ce.chunk.js",
+  "main.js": "./static/js/main.a47dd0d9.chunk.js",
   "runtime~main.js": "./static/js/runtime~main.9eb600ee.js",
   "static/js/2.567a644c.chunk.js": "./static/js/2.567a644c.chunk.js",
   "index.html": "./index.html",
-  "precache-manifest.1b453072729c906e81995a8376f370bc.js": "./precache-manifest.1b453072729c906e81995a8376f370bc.js",
+  "precache-manifest.99141a3ebc3da8c2c5daaa0b374b547a.js": "./precache-manifest.99141a3ebc3da8c2c5daaa0b374b547a.js",
   "service-worker.js": "./service-worker.js",
   "static/media/telegram.svg": "./static/media/telegram.0efc6ad3.svg",
   "static/media/twitch.svg": "./static/media/twitch.da4c4d30.svg",

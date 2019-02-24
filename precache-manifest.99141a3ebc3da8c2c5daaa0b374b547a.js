@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "./static/media/twitch.da4c4d30.svg"
   },
   {
-    "revision": "6756f0ce10867d2fc39c",
+    "revision": "a47dd0d92c6431e46cab",
     "url": "./static/css/main.a8dd9431.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "./static/media/telegram.0efc6ad3.svg"
   },
   {
-    "revision": "6756f0ce10867d2fc39c",
-    "url": "./static/js/main.6756f0ce.chunk.js"
+    "revision": "a47dd0d92c6431e46cab",
+    "url": "./static/js/main.a47dd0d9.chunk.js"
   },
   {
     "revision": "be06689853aec102607f5e54e6fd2dfa",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "./static/media/web.ffeb4651.svg"
   },
   {
-    "revision": "5a7d07072462d7cfbfd98aab59a65d58",
+    "revision": "ea6b56b3eaff35f2bc7ce901e9742a79",
     "url": "./index.html"
   }
 ];
