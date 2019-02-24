@@ -83,7 +83,7 @@ describe('auth reducer', () => {
     });
   });
 
-  it('LOGIN_FAILED replaces "wrong_email_or_password" to clear message from error dictionary', () => {
+  it('LOGIN_FAILED replaces the error message "wrong_email_or_password" from the dictonary', () => {
     const state = {
       ...initialState,
       isPending: true,
@@ -100,6 +100,86 @@ describe('auth reducer', () => {
       isPending: false,
       isLogin: false,
       error: errors['wrong_email_or_password']
+    });
+  });
+
+  it('LOGIN_FAILED replaces the error message "network_error" from the dictonary', () => {
+    const state = {
+      ...initialState,
+      isPending: true,
+      isLogin: true,
+      error: null
+    };
+    const action = {
+      type: t.LOGIN_FAILED,
+      payload: 'network_error'
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      isPending: false,
+      isLogin: false,
+      error: errors['network_error']
+    });
+  });
+
+  it('LOGIN_FAILED replaces the error message "unknown_server_status" from the dictonary', () => {
+    const state = {
+      ...initialState,
+      isPending: true,
+      isLogin: true,
+      error: null
+    };
+    const action = {
+      type: t.LOGIN_FAILED,
+      payload: 'unknown_server_status'
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      isPending: false,
+      isLogin: false,
+      error: errors['unknown_server_status']
+    });
+  });
+
+  it('LOGIN_FAILED replaces the error message "empty_message_from_server" from the dictonary', () => {
+    const state = {
+      ...initialState,
+      isPending: true,
+      isLogin: true,
+      error: null
+    };
+    const action = {
+      type: t.LOGIN_FAILED,
+      payload: 'empty_message_from_server'
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      isPending: false,
+      isLogin: false,
+      error: errors['empty_message_from_server']
+    });
+  });
+
+  it('LOGIN_FAILED does not replace the error message "error_message_that_is_not_in_the_dictionary"', () => {
+    const state = {
+      ...initialState,
+      isPending: true,
+      isLogin: true,
+      error: null
+    };
+    const action = {
+      type: t.LOGIN_FAILED,
+      payload: 'error_message_that_is_not_in_the_dictionary'
+    };
+
+    expect(reducer(state, action)).toEqual({
+      ...state,
+      isPending: false,
+      isLogin: false,
+      error: 'error_message_that_is_not_in_the_dictionary'
     });
   });
 
