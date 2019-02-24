@@ -8,8 +8,13 @@ export function httpRequest(path, init) {
     fetch(`${base}${path}`, init)
       // process network problem
       .then(res => {
-        if (!res.ok) throw new ResponseError('network_error', res);
-        return res.json();
+        if (res.ok) return res.json();
+        throw new ResponseError('network_error', res);
+      })
+      // for catching "TypeError: Failed to fetch" and replacing it to network_error
+      .catch(err => {
+        if (err instanceof ResponseError) throw err;
+        throw new ResponseError('network_error', err);
       })
       // process api problem
       .then(res => {
