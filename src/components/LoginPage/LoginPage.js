@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TextInput } from '../TextInput';
+import { ErrorMsg } from '../ErrorMsg';
 import { useValidation } from '../../helpers/useValidation';
 import debug from '../../helpers/debug';
 import './LoginPage.css';
@@ -14,7 +15,7 @@ const validate = {
       )) &&
     'Email is not valid!',
   password: value =>
-    value.length < 1 && 'Minimum password length is 1 characters!'
+    value.length < 1 && 'Minimum password length is 1 characters!',
 };
 
 export const LoginPage = props => {
@@ -22,7 +23,7 @@ export const LoginPage = props => {
 
   const initValues = {
     login: sessionStorage.getItem('login') || '',
-    password: sessionStorage.getItem('password') || ''
+    password: sessionStorage.getItem('password') || '',
   };
 
   // state
@@ -35,7 +36,7 @@ export const LoginPage = props => {
     setTouched,
     handleBlur,
     handleChange,
-    handleSubmit
+    handleSubmit,
   } = useValidation({
     initValues,
     validate,
@@ -48,23 +49,23 @@ export const LoginPage = props => {
           setValues({ ...values, password: '' });
         }
       });
-    }
+    },
   });
 
   debug('render LoginPage');
 
   return (
     <>
-      {isLogin && <Redirect to='/profile' />}
-      <h1 className='login-form__title'>Authorization</h1>
+      {isLogin && <Redirect to="/profile" />}
+      <h1 className="login-form__title">Authorization</h1>
 
-      <form className='login-form'>
+      <form className="login-form">
         <label>
           <TextInput
-            type='email'
-            name='login'
-            autoComplete='email'
-            placeholder='user@mail.com'
+            type="email"
+            name="login"
+            autoComplete="email"
+            placeholder="user@mail.com"
             value={values.login}
             isValid={!errors.login}
             error={touched.login && errors.login}
@@ -76,10 +77,10 @@ export const LoginPage = props => {
 
         <label>
           <TextInput
-            type='password'
-            name='password'
-            placeholder='password'
-            autoComplete='current-password'
+            type="password"
+            name="password"
+            placeholder="password"
+            autoComplete="current-password"
             value={values.password}
             error={touched.password && errors.password}
             onBlur={handleBlur}
@@ -89,14 +90,14 @@ export const LoginPage = props => {
         </label>
 
         <button
-          className='login-form__btn'
+          className="login-form__btn"
           onClick={handleSubmit}
           disabled={isPending || !isValid}
         >
           {isPending ? 'wait...' : 'login'}
         </button>
 
-        {!isValid && error && <p className='error'>{error}</p>}
+        {!isValid && error && <ErrorMsg error={error} />}
       </form>
     </>
   );
@@ -105,5 +106,5 @@ export const LoginPage = props => {
 LoginPage.propTypes = {
   isLogin: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  authLogin: PropTypes.func.isRequired
+  authLogin: PropTypes.func.isRequired,
 };

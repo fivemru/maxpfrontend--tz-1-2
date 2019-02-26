@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { UserInfo } from '../UserInfo';
 import { Spinner } from '../Spinner';
+import { ErrorMsg } from '../ErrorMsg';
 import debug from '../../helpers/debug';
 import './ProfilePage.css';
 
@@ -17,7 +18,7 @@ export const ProfilePage = props => {
   return (
     <div>
       <h1>Profile page</h1>
-      {error && <p className='error'>{error}</p>}
+      {error && <ErrorMsg error={error} />}
       {isPending && <Spinner text={`Loading profile #${user.userId}...`} />}
       {!error && !isPending && <UserInfo {...user} />}
     </div>
@@ -32,6 +33,6 @@ ProfilePage.propTypes = {
     userId: PropTypes.number.isRequired,
     city: PropTypes.string,
     languages: PropTypes.array,
-    social: PropTypes.array
-  })
+    social: PropTypes.array,
+  }),
 };
