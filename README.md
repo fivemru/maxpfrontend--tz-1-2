@@ -1,20 +1,20 @@
 # The solution of task #2 from @maxfarseer
 
-**Main tools**: CRA, react, redux, redux-thunk, react-router.
+**Main tools**: CRA, react, redux, redux-thunk, react-router, enzyme, redux-mock-store.
 
-### [Demo link](https://fivemru.github.io/maxpfrontend--tz-1-2/index.html)
+### [Demo link](https://fivemru.github.io/maxpfrontend--tz1-3/index.html)
 
 
 ## Features
 
 1. React hooks used
-1. Unit [testing reducers](https://github.com/fivemru/maxpfrontend--tz-1-2/tree/tz2/src/reducers)
-1. Unit [testing actions](https://github.com/fivemru/maxpfrontend--tz-1-2/tree/tz2/src/actions)
-2. Handling network errors and API errors are located in the [helper](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/network.js)
-3. Unit [testing network and api errors](https://github.com/fivemru/maxpfrontend--tz-1-2/tree/tz2/src/helpers/network.spec.js)
-4. Custom hook [useValidation()](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/useValidation.js) for validation. Usage [example](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/components/LoginPage/LoginPage.js).
-5. Own error type [ResponseError](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/errors.js) for API error with saving server response
-6. Error parser [parseError](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/errors.js)
+1. Unit [testing reducers](src/reducers)
+1. Unit [testing actions](src/actions)
+2. Handling network errors and API errors are located in the [helper](src/helpers/network.js)
+3. Unit [testing network and api errors](src/helpers/network.spec.js)
+4. Custom hook [useValidation()](src/helpers/useValidation.js) for validation. Usage [example](src/components/LoginPage/LoginPage.js).
+5. Own error type [ResponseError](src/helpers/errors.js) for API error with saving server response
+6. Error parser [parseError](src/helpers/errors.js)
 
 ## Usage
 
