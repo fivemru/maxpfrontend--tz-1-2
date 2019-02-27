@@ -1,27 +1,27 @@
 self.__precacheManifest = [
   {
-    "revision": "da4c4d30dc21de6aa05a874c7ace0314",
-    "url": "./static/media/twitch.da4c4d30.svg"
+    "revision": "5d4b558e5929ae9aeaf2",
+    "url": "./static/css/main.300767b5.chunk.css"
   },
   {
-    "revision": "a47dd0d92c6431e46cab",
-    "url": "./static/css/main.a8dd9431.chunk.css"
+    "revision": "5d4b558e5929ae9aeaf2",
+    "url": "./static/js/main.5d4b558e.chunk.js"
   },
   {
     "revision": "9eb600ee07a27cdad64f",
     "url": "./static/js/runtime~main.9eb600ee.js"
   },
   {
-    "revision": "567a644c929dc50ab817",
-    "url": "./static/js/2.567a644c.chunk.js"
+    "revision": "7404952b0981bafbbbf8",
+    "url": "./static/js/2.7404952b.chunk.js"
   },
   {
     "revision": "0efc6ad30bf493ee0e1827c366ab7803",
     "url": "./static/media/telegram.0efc6ad3.svg"
   },
   {
-    "revision": "a47dd0d92c6431e46cab",
-    "url": "./static/js/main.a47dd0d9.chunk.js"
+    "revision": "da4c4d30dc21de6aa05a874c7ace0314",
+    "url": "./static/media/twitch.da4c4d30.svg"
   },
   {
     "revision": "be06689853aec102607f5e54e6fd2dfa",
@@ -36,11 +36,11 @@ self.__precacheManifest = [
     "url": "./static/media/youtube.330cdcdc.svg"
   },
   {
-    "revision": "ffeb46513b16244246be902fa1f9cdb9",
-    "url": "./static/media/web.ffeb4651.svg"
+    "revision": "a19f9979faed74c6fd844b292e35cb6f",
+    "url": "./static/media/web.a19f9979.svg"
   },
   {
-    "revision": "ea6b56b3eaff35f2bc7ce901e9742a79",
+    "revision": "d9f58d7a478dbadaea89d523ef9770c3",
     "url": "./index.html"
   }
 ];

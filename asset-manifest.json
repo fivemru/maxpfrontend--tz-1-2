@@ -1,15 +1,15 @@
 {
-  "main.css": "./static/css/main.a8dd9431.chunk.css",
-  "main.js": "./static/js/main.a47dd0d9.chunk.js",
+  "main.css": "./static/css/main.300767b5.chunk.css",
+  "main.js": "./static/js/main.5d4b558e.chunk.js",
   "runtime~main.js": "./static/js/runtime~main.9eb600ee.js",
-  "static/js/2.567a644c.chunk.js": "./static/js/2.567a644c.chunk.js",
+  "static/js/2.7404952b.chunk.js": "./static/js/2.7404952b.chunk.js",
   "index.html": "./index.html",
-  "precache-manifest.99141a3ebc3da8c2c5daaa0b374b547a.js": "./precache-manifest.99141a3ebc3da8c2c5daaa0b374b547a.js",
+  "precache-manifest.38d4e1156177b764935a0c3d85713d9b.js": "./precache-manifest.38d4e1156177b764935a0c3d85713d9b.js",
   "service-worker.js": "./service-worker.js",
   "static/media/telegram.svg": "./static/media/telegram.0efc6ad3.svg",
   "static/media/twitch.svg": "./static/media/twitch.da4c4d30.svg",
   "static/media/twitter.svg": "./static/media/twitter.be066898.svg",
   "static/media/vk.svg": "./static/media/vk.763b977a.svg",
-  "static/media/web.svg": "./static/media/web.ffeb4651.svg",
+  "static/media/web.svg": "./static/media/web.a19f9979.svg",
   "static/media/youtube.svg": "./static/media/youtube.330cdcdc.svg"
 }
