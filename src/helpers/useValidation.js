@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useValidation = ({
   initValues = {},
@@ -6,21 +6,19 @@ export const useValidation = ({
   onSubmit,
   validateWhenInit = false,
   validateOnBlur = true,
-  validateOnChange = true
+  validateOnChange = true,
 }) => {
-  const [firstInit, setFirstInit] = useState(true);
+  const [didMounted, setDidMounted] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [values, setValues] = useState({ ...initValues });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
 
-  const handleValidate = nextValues => {
+  const handleValidate = () => {
     const errors = {};
-    const actualValues = nextValues || values;
-
     for (const field in validate) {
       const check = validate[field];
-      errors[field] = check(actualValues[field]);
+      errors[field] = check(values[field]);
     }
     setErrors(errors);
 
@@ -31,15 +29,12 @@ export const useValidation = ({
   const handleBlur = e => {
     const { currentTarget } = e;
     setTouched({ ...touched, [currentTarget.name]: true });
-    if (validateOnBlur) handleValidate();
   };
 
   const handleChange = e => {
     const { currentTarget } = e;
     const nextValues = { ...values, [currentTarget.name]: currentTarget.value };
     setValues(nextValues);
-    // pass actual values
-    if (validateOnChange) handleValidate(nextValues);
   };
 
   const handleSubmit = e => {
@@ -50,16 +45,22 @@ export const useValidation = ({
       Object.assign({}, ...Object.keys(values).map(f => ({ [f]: true })))
     );
 
-    handleValidate();
-
     const noErrors = Object.values(errors).every(err => !err);
     if (noErrors) onSubmit(values);
   };
 
-  if (validateWhenInit && firstInit) {
-    setFirstInit(false);
-    handleValidate();
-  }
+  useEffect(() => {
+    if (didMounted && validateOnBlur) handleValidate();
+  }, [touched]);
+
+  useEffect(() => {
+    if (didMounted && validateOnChange) handleValidate();
+  }, [values]);
+
+  useEffect(() => {
+    if (validateWhenInit) handleValidate();
+    setDidMounted(true);
+  }, []);
 
   return {
     values,
@@ -70,10 +71,7 @@ export const useValidation = ({
     handleBlur,
     handleSubmit,
     handleValidate,
-    setValues: nextValues => {
-      setValues(nextValues);
-      handleValidate(nextValues);
-    },
-    setTouched
+    setValues,
+    setTouched,
   };
 };

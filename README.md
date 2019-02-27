@@ -12,7 +12,7 @@
 1. Unit [testing actions](https://github.com/fivemru/maxpfrontend--tz-1-2/tree/tz2/src/actions)
 2. Handling network errors and API errors are located in the [helper](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/network.js)
 3. Unit [testing network and api errors](https://github.com/fivemru/maxpfrontend--tz-1-2/tree/tz2/src/helpers/network.spec.js)
-4. Own small validation helper based on hooks [useValidation()](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/useValidation.js). Usage [example](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/components/LoginPage/LoginPage.js).
+4. Custom hook [useValidation()](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/useValidation.js) for validation. Usage [example](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/components/LoginPage/LoginPage.js).
 5. Own error type [ResponseError](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/errors.js) for API error with saving server response
 6. Error parser [parseError](https://github.com/fivemru/maxpfrontend--tz-1-2/blob/tz2/src/helpers/errors.js)
 
